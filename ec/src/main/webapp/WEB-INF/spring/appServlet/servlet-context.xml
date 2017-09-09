@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/aop     
+        http://www.springframework.org/schema/aop/spring-aop.xsd   
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/mongo
+       	http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<context:component-scan base-package="com.dlut.ecwebsite" />
+
+	<!-- 使用cglib进行动态代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- dao -->
+	<jpa:repositories base-package="com.dlut.ecwebsite.repository"
+		repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory"
+		transaction-manager-ref="transactionManager" />
+
+	<!-- 支持注解方式声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<!-- 验证码 -->
+	<beans:bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<beans:property name="config">
+			<beans:bean class="com.google.code.kaptcha.util.Config">
+				<beans:constructor-arg>
+					<beans:props>
+						<beans:prop key="kaptcha.border">
+							no
+						</beans:prop>
+						<beans:prop key="kaptcha.textproducer.font.color">
+							blue
+						</beans:prop>
+						<beans:prop key="kaptcha.image.width">
+							80
+						</beans:prop>
+						<beans:prop key="kaptcha.image.height">
+							34
+						</beans:prop>
+						<beans:prop key="kaptcha.noise.impl">
+							com.google.code.kaptcha.impl.NoNoise
+						</beans:prop>
+						<beans:prop key="kaptcha.background.clear.from">
+							white
+						</beans:prop>
+						<beans:prop key="kaptcha.background.clear.to">
+							white
+						</beans:prop>
+						<beans:prop key="kaptcha.textproducer.char.space">
+							4
+						</beans:prop>
+						<beans:prop key="kaptcha.textproducer.font.size">
+							30
+						</beans:prop>
+						<beans:prop key="kaptcha.session.key">
+							code
+						</beans:prop>
+						<beans:prop key="kaptcha.textproducer.char.length">
+							4
+						</beans:prop>
+						<beans:prop key="kaptcha.textproducer.font.names">
+							宋体,楷体,微软雅黑
+						</beans:prop>
+					</beans:props>
+				</beans:constructor-arg>
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+	<!-- 数据源 -->
+	<beans:bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url"
+			value="jdbc:mysql://localhost:3306/EC?user=root;password=mysql" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="mysql" />
+		<beans:property name="initialSize" value="2" />
+		<beans:property name="maxActive" value="8" />
+		<beans:property name="minIdle" value="2" />
+		<!--<beans:property name="removeAbandoned" value="${druid.removeAbandoned}" 
+			/> <beans:property name="removeAbandonedTimeout" value="${druid.removeAbandonedTimeout}" 
+			/> <beans:property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" 
+			/> <beans:property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" 
+			/> <beans:property name="validationQuery" value="${druid.validationQuery}" 
+			/> <beans:property name="testWhileIdle" value="${druid.testWhileIdle}" /> 
+			<beans:property name="testOnBorrow" value="true" /> <beans:property name="testOnReturn" 
+			value="false" /> <beans:property name="poolPreparedStatements" value="false" 
+			/> <beans:property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.maxPoolPreparedStatementPerConnectionSize}" 
+			/> <beans:property name="filters" value="${druid.filters}" /> -->
+	</beans:bean>
+
+	<!-- 实体管理器 -->
+	<beans:bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<!-- 指定Entity实体类包路径 -->
+		<beans:property name="packagesToScan" value="com.dlut.ecwebsite.entity" />
+		<beans:property name="persistenceProvider">
+			<beans:bean class="org.hibernate.ejb.HibernatePersistence" />
+		</beans:property>
+		<beans:property name="jpaVendorAdapter">
+			<beans:bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<beans:property name="generateDdl" value="false" />
+				<beans:property name="database" value="MYSQL" />
+				<beans:property name="databasePlatform"
+					value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<beans:property name="showSql" value="true" />
+			</beans:bean>
+		</beans:property>
+		<beans:property name="jpaDialect">
+			<beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</beans:property>
+		<beans:property name="jpaPropertyMap">
+			<beans:map>
+				<beans:entry key="hibernate.query.substitutions" value="true 1, false 0" />
+				<beans:entry key="hibernate.default_batch_fetch_size"
+					value="16" />
+				<beans:entry key="hibernate.max_fetch_depth" value="2" />
+				<beans:entry key="hibernate.generate_statistics" value="true" />
+				<beans:entry key="hibernate.bytecode.use_reflection_optimizer"
+					value="true" />
+				<beans:entry key="hibernate.cache.use_second_level_cache"
+					value="false" />
+				<beans:entry key="hibernate.cache.use_query_cache"
+					value="false" />
+			</beans:map>
+		</beans:property>
+	</beans:bean>
+
+
+
+	<!-- 事务管理器 -->
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+	</beans:bean>
+
+	<!-- 事务 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" />
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 事务入口 -->
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="execution(* 
+		com.dlut.ecwebsite.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+	</aop:config>
+
+</beans:beans>

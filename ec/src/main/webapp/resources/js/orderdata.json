@@ -1,0 +1,39 @@
+[
+  {
+    "order_id": "1",
+    "order_status": "new",
+    "order_time": "2017-07-17 20:55:00",
+    "order_pay": "银行卡",
+    "order_send": "EMS",
+    "order_address": {
+      "id": "1",
+      "address": "辽宁省大连市金州区大连理工大学软件学院"
+    },
+    "order_item": [
+      {
+      "item_id": "1",
+      "item_amount": "2",
+      "goods_id": "2",
+      "goods_name": "sdfsdfsf",
+      "goods_image": "images/goods3-1.jpg",
+      "goods_price": "50.00"
+      },
+      {
+        "item_id": "2",
+        "item_amount": "2",
+        "goods_id": "1",
+        "goods_name": "sdfsdfsf",
+        "goods_image": "images/goods1-1.jpg",
+        "goods_price": "100.00"
+      },
+      {
+        "item_id": "3",
+        "item_amount": "2",
+        "goods_id": "3",
+        "goods_name": "sdfsdfsf",
+        "goods_image": "images/goods6-1.jpg",
+        "goods_price": "100.00"
+      }
+    ]
+  }
+]

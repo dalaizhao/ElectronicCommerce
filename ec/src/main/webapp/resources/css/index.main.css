@@ -1,0 +1,250 @@
+/*主页的主体，包括轮番，定位，商品展示区*/
+
+/*轮番图*/
+.col-xs-6, .col-xs-2{
+    padding: 0 !important;
+}
+#myCarousel{
+    height: 320px;
+    width: 100%;
+}
+#myCarousel>img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*search*/
+#form-s{
+    padding: 0;
+    margin: 0;
+}
+#search{
+    margin: 30px 0 10px 20px;
+    float: left;
+    width: 220px;
+}
+#Form .btn-default{
+    float: left;
+    margin: 30px 0 10px 0;
+    height: 34px !important;
+    background-color: #f60;
+    color: #FFF;
+}
+/*地区*/
+.col-xs-4{
+    padding: 0 !important;
+}
+.area{
+    width: 310px;
+    height: 320px;
+}
+.getArea{
+    text-align: center;
+}
+.getA{
+    font-size: 18px;
+    font-weight: normal;
+}
+#getAContext{
+    padding-left: 10px;
+    font-size:12px;
+    font-weight:normal;
+    color: #c0c0c0;
+}
+.reqArea{
+    float: left;
+    padding-left: 20px;
+}
+#reqP,#reqC,#reqU{
+    padding-top: 10px;
+}
+.reqAreaItem{
+    width: 300px;
+}
+.btn-default{
+    height: 30px;
+    font-size: inherit;
+}
+#lr-hidden{
+    text-align: left;
+}
+#select-label{
+    font-weight: normal;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+#school-info{
+    width: 100px;
+    height: 60px;
+    margin: 30px 0 0 20px;
+    position: relative;
+}
+label#school-info
+{
+
+    animation:myfirst 5s linear 2s infinite alternate;
+    /* Firefox: */
+    -moz-animation:myfirst 5s linear 2s infinite alternate;
+    /* Safari and Chrome: */
+    -webkit-animation:myfirst 5s linear 2s infinite alternate;
+    /* Opera: */
+    -o-animation:myfirst 5s linear 2s infinite alternate;
+    animation-iteration-count: 2;
+}
+
+@keyframes myfirst
+{
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:150px; top:0px;}
+    50%  {background:blue; left:300px; top:0px;}
+    75%  {background:green; left:150px; top:0px;}
+    100% {background:red; left:0px; top:0px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:150px; top:0px;}
+    50%  {background:blue; left:300px; top:0px;}
+    75%  {background:green; left:150px; top:0px;}
+    100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:150px; top:0px;}
+    50%  {background:blue; left:300px; top:0px;}
+    75%  {background:green; left:150px; top:0px;}
+    100% {background:red; left:0px; top:0px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:150px; top:0px;}
+    50%  {background:blue; left:300px; top:0px;}
+    75%  {background:green; left:150px; top:0px;}
+    100% {background:red; left:0px; top:0px;}
+}
+/*商品区*/
+/*product-title*/
+.product-title{
+    position: relative;
+    height: 40px;
+    width: 1124px;
+    margin: 0 auto;
+}
+.pro-title{
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 24px;;/*24px*/
+    font-weight: normal;
+    color: #383838;
+}
+.pro-title:hover{
+    text-decoration: none;
+    /*color: #66AFE9;*/
+    color: #f60;
+
+}
+.more{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    text-decoration: none;
+    padding-top: 5px;
+
+}
+.more:hover{
+    text-decoration: none;
+    color: #383838;
+}
+/*商品*/
+.new-product .col-xs-3{
+    padding: 0;
+    margin: 0;
+}
+.new-product .container{
+    padding: 0!important;
+    margin: 0 !important;
+    margin-top: 60px !important;
+}
+.new-product .container .row{
+    padding: 0 !important;
+    margin:  0  !important;
+}
+.pro{
+    height: 190px;
+    margin: 5px;
+    border: #CCC solid 1px;
+    border-radius:10px;
+    background-color: #FFF;
+}
+.pro-intro{
+    height: 390px;
+    margin: 5px ;
+}
+.cate-poster{
+    width: 100%;
+    height: 100%;
+    background-color: #acacac;
+}
+
+.pro:hover{
+    border: #66AFE9 solid 1px;
+}
+.pic{
+    height: 164px;
+    width: 164px;
+    margin: 12px 12px;
+    float: left;
+    position: relative;
+}
+.det{
+    float: left;
+}
+/*233*/
+.pro-name{
+    position: absolute;
+    left: 192px;
+    top: 45px;
+    width: 80px;
+    height: 66px;
+    font-size: 1.2em;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    overflow: hidden;
+}
+.pro-price{
+    position: absolute;
+    bottom: 45px;
+    left: 176px;
+    width: 96px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #F60;
+}
+.pro-owner{
+    font-weight: normal;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.pro-number{
+    font-weight: normal;
+    color: #383838;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+/*分类*/
+.row , .col-xs-3 , .col-xs-9 , .col-xs-4{
+    padding: 0!important;
+    margin: 0 !important;
+}
+
+
+

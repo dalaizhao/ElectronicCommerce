@@ -1,0 +1,288 @@
+/*整站的基本框架模型*/
+/* CSS Document */
+
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,dl,dt,dd,input{
+    margin:0;
+    padding:0;
+}
+body{
+    font-size:12px;
+}
+img{
+    border:none;
+}
+li{
+    list-style:none;
+}
+input,select,textarea{
+    outline:none;
+    border:none;
+    background:none;
+}
+textarea{
+    resize:none;
+}
+a, a:visited{
+    text-decoration:none;
+    color:#000000;
+}
+a:hover{
+    text-decoration: none;
+    color: #ff6600;
+}
+.topBar a:hover{
+    color:#FFF;
+}
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}
+
+/*清浮动*/
+.clearfix:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+.clearfix{
+    zoom:1;
+}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.main-strong{
+    color: #FF6600;
+    font-weight: bold;
+}
+.btn-disabled, .btn-disabled:hover, .btn-disabled:focus{
+    background-color: #cbcbcb !important;
+    box-shadow: none;
+}
+
+.error-info{
+    color: #ff0000;
+    font-size: x-small;
+}
+.success-info{
+    color: green;
+    font-size: x-small;
+}
+
+/* navigationBar */
+.header-frame{
+    width: 100%;
+    height: 56px;
+}
+
+.header{
+    width: 100%;
+    height: 56px;
+    min-width: 1000px;
+    background: #d9d9d9;
+}
+.navigationBar {
+    width: 100%;
+    min-width: 1000px;
+    height: 30px;
+    background-color: #000000;
+}
+.nav-container{
+    width: 1000px;
+    height: 30px;
+    margin: 0 auto;
+    list-style: none;
+    line-height: 30px;
+    color: #ffffff;
+}
+.nav-link{
+    color: #ffffff !important;
+}
+.nav-link:hover{
+    color: #ff6600 !important;
+    text-decoration: none;
+}
+.nav-item, .nav-connector{
+    float: left;
+}
+.nav-terminator{
+    clear: both;
+}
+.header-container{
+    width: 1124px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    line-height: 56px;
+    font-size: 20px;
+}
+.user-container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+}
+.option-container{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+}
+.header-item{
+    box-sizing: border-box;
+    width: 90px;
+    height: 100%;
+    padding: 0 12px;
+    color: #000000;
+    text-decoration: none;
+}
+.header-item:hover{
+    background-color: #ff4400;
+    color: #ffffff;
+    text-decoration: none;
+}
+.user-container .header-item{
+    float: left;
+}
+.option-container .header-item{
+    float: right;
+}
+.header-link{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+
+.container {
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 1239px !important;
+}
+
+.row {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+html, body {
+    background-color: #F5F5F5;
+}
+
+/*导航栏*/
+.navbar-default {
+    width: 100% !important;
+    height: 70px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
+
+.navbar-brand {
+    height: 60px;
+    margin: 5px 0 5px 100px !important;
+    padding: 0;
+    float: left;
+}
+
+.navbar {
+    min-height: 70px;
+    background: #FFF;
+}
+
+.navbar-default .container {
+    height: 70px !important;
+}
+
+#nav-title {
+    height: 60px;
+    margin: 5px 0 5px 20px;
+    padding: 0;
+    float: left;
+    line-height: 60px;
+}
+
+.nav-r {
+    float: right;
+    font-size: 16px;
+    margin: 24px 0 25px 0;
+}
+
+.nav-r > a {
+    color: #383838;
+    margin-right: 20px;
+}
+
+.nav-r > a:hover {
+    text-decoration: none;
+    color: #F60;
+}
+
+/*#msg {*/
+    /*color: #F60;*/
+
+/*}*/
+
+.nav-we {
+    padding-right: 40px;
+}
+
+.navigationBar #all-class {
+    text-align: center;
+    width: 188px;
+    height: 42px;
+    margin-left: 6px;
+    padding:10px 0 0  0 !important;
+    line-height: 32px;
+    font-size: 24px;
+    color: #FFF;
+    background: #272727;
+}
+
+/*主体*/
+#of_show {
+    width: 1136px;
+    margin: 0 auto;
+    height: auto;
+}
+
+/*信用说明*/
+.promise {
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #f60;
+}
+
+.promise .container {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 60px !important;
+}
+
+.promise .container .row {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.promise .container .row .col-xs-4 {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/*关于网站*/
+.about {
+    width: 100%;
+    min-width: 1136px;
+    height: 150px;
+    margin: 0 auto;
+    background-color: #000000;
+}
