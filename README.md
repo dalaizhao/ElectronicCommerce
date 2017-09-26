@@ -33,7 +33,7 @@
 
 ## 实现
 
-先贴出sql E-R图（还有两个函数）,这个设计的挺好的，但是导师指出一些问题，大概还记得是用户表要合并成一个（还有吧，忘了），不过运行之类没问题，要完整sql代码的私聊或者issues：  
-![sql](https://raw.githubusercontent.com/dalaizhao/ElectronicCommerce/master/image/database.png)   
+先贴出sql E-R图（还有两个函数）,这个设计的挺好的，但是导师指出一些问题，大概还记得是用户表要合并成一个（还有吧，忘了），不过运行之类没问题,下载下来就能运行。   
+![sql](https://raw.githubusercontent.com/dalaizhao/ElectronicCommerce/master/image/database.png)    
 
 整体实现代码已经全部上传，在ec目录下导入工程即可。  
